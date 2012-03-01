@@ -65,10 +65,16 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
+    <Compile Include="DataAccess\EntityFrameworkRepository.cs" />
+    <Compile Include="DataAccess\GrainSystemDataContext.cs" />
+    <Compile Include="DataAccess\IRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Carrier.cs" />
+    <Compile Include="Models\CarrierInvoice.cs" />
+    <Compile Include="Models\FreightInvoice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
