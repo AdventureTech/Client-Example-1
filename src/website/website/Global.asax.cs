@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using StructureMap;
 
 namespace website
 {
@@ -35,6 +36,11 @@ namespace website
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+        }
+
+        protected void Application_EndRequest()
+        {
+            ObjectFactory.ReleaseAndDisposeAllHttpScopedObjects();
         }
     }
 }
