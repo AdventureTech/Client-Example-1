@@ -13,6 +13,7 @@ namespace website {
                                         scan.WithDefaultConventions();
                                     });
                             x.For<DbContext>().HttpContextScoped().Use<GrainSystemDataContext>();
+                            x.For(typeof(IRepository<>)).Use(typeof(EntityFrameworkRepository<>));
                         });
             return ObjectFactory.Container;
         }
