@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Linq;
 
 namespace website.DataAccess
 {
@@ -19,6 +20,11 @@ namespace website.DataAccess
         public void Add(T entity)
         {
             DbSet.Add(entity);
+        }
+
+        public IQueryable<T> Query()
+        {
+            return DbSet.AsQueryable();
         }
     }
 }
