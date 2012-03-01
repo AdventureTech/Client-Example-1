@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create an Invoice</h2>
+
+<div class="row">
+    <div class="span6">
+        <form class="form-horizontal">
+            <fieldset>
+                <legend>Invoice Data</legend>
+                <div class="control-group">
+                    <label class="control-label" for="carrierName">Inovice Date</label>
+                    <div class="controls">
+                        <input type="text" class="input-small disabled" value="2/2/2012" id="invoiceDate" disabled />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="invoiceNumber">Invoice Number</label>
+                    <div class="controls">
+                        <input type="text" class="input-small disabled" value="343" id="invoiceNumber" disabled />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="invoiceLocation">Invoice Location</label>
+                    <div class="controls">
+                        <input type="text" class="input-medium" id="invoiceLocation" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="carrierName">Carrier</label>
+                    <div class="controls">
+                        <input type="text" class="input-large" id="carrierName" placeholder="Begin typing..." />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inoviceAmount">Invoice Amount</label>
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <span class="add-on">$</span>
+                            <input type="text" class="input-large" id="invoiceAmount" />
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="span6" id="freightItemsContainer" style="display:none;">
+        <h2>Open Freight Items For <span id="openItemsFor"></span></h2>
+        <table class="table table-striped table-bordered table-condensed" id="openFreightItems">
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>Date</th>
+                    <th>Src Type</th>
+                    <th>Src #</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>2/1/2012</td>
+                    <td>Train</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>1/21/2012</td>
+                    <td>Truck</td>
+                    <td>4</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(function () {
+
+        $('#carrierName').typeahead({
+            source: ['Big Bobs Trucking [232]', 'Tiny Tims Trucking [4545]', 'Ebenezers Frugal Trucking [653]'],
+            items: 5
+        })
+        .keyup(function () {
+            if ($(this).val() == '')
+                $('#freightItemsContainer').hide();
+            else {
+                $('#openItemsFor').text($(this).val());
+                $('#freightItemsContainer').show();
+            }
+        });
+    });
+</script>
